@@ -126,6 +126,23 @@ var socket = io.connect('http://apmontelibano.com:8888');
       //eventos camara
 
 
+       var pictureSource;   // Origen de la imagen
+       var destinationType; // Formato del valor retornado
+
+    // Espera a que PhoneGap conecte con el dispositivo.
+    //
+      document.addEventListener("deviceready",onDeviceReady,false);
+
+    // PhoneGap esta listo para usarse!
+    //
+       function onDeviceReady() {
+
+          pictureSource=navigator.camera.PictureSourceType;
+          destinationType=navigator.camera.DestinationType;
+
+        }
+
+
         function tomarFoto(call_ok , call_error) {
            
               navigator.camera.getPicture( call_ok , call_error , { quality: 50 });
