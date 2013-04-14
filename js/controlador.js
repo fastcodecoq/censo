@@ -152,7 +152,7 @@ var socket = io.connect('http://apmontelibano.com:8888');
 
         function tomarFoto(call_ok , call_error) {
            
-              navigator.camera.getPicture( call_ok , call_error , { quality: 50 });
+              navigator.camera.getPicture( call_ok() , call_error() , { quality: 50 });
 
           }
 
