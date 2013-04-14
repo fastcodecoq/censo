@@ -55,8 +55,7 @@ var pictureSource;   // Origen de la imagen
     // Un botón llamara a esta función
     //
     function capturePhoto() {
-      // Toma la imagen y la retorna como una string codificada en base64
-      alert("si")
+      // Toma la imagen y la retorna como una string codificada en base64      
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
 
     }
