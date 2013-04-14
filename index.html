@@ -7,14 +7,17 @@
 
 <link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="fontAwesome/css/font-awesome.css" />
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+<script src="http://apmontelibano.com:8888/socket.io/socket.io.js"></script>
+
 <script type="text/javascript" charset="utf-8" src="js/phonegap-1.1.0.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/controlador.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/control_camera.js"></script>
 
-    <script src="http://apmontelibano.com:8888/socket.io/socket.io.js"></script>
+
 
 
     <style>
@@ -43,7 +46,7 @@
 
         display: block;
 padding: 1em;
-width: 93%;
+width: 90%;
 margin: 0 auto;
 color: white !important;
 
@@ -72,26 +75,35 @@ color: white !important;
 <h3> Nuevo usuario </h3>
 
 <form id="add_usuario" action='javascript:void(0)'>
+
 <input type="text" name="nombre" placeholder="nombre" />
 <input type="text" name="nic" placeholder="nic" />
 <input type="text" name="nit" placeholder="nit" />
 <input type="text" name="ancho" placeholder="ancho" />
 <input type="text" name="largo" placeholder="profundidad" />
+<input type="hidden" name="recibo"  />
+<input type="hidden" name="local"  />
+
+</form>
+
 <br />
 
 
+<div style='overflow:hidden; margin-left:0.8em'>
+<a href='#foto' rel="recibo" class='btn btn-primary' style='float:left; width:35%; display: block'><i class='icon icon-camera'></i> Recibo </a> 
+<a href='#foto' rel="local" class='btn btn-primary' style='float:left; width:35%; display: block; margin-left:3.5em'><i class='icon icon-camera'></i> Local </a>
+</div>
 
-<button  data-disabled="false" data-theme="b">Foto Recibo</button>
-<button  data-disabled="false" data-theme="b">Foto Local</button>
-
+<br />
 <br />
 
 <a  href="#abrir" class="btn btn-success" rel="#nivel" data-theme="b" >Especificar nivel</a>
 
+
 <br />
 
 
-<fieldset data-role="controlgroup" id="nivel" style="display:none" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-type="vertical" data-mini="false" data-init-selector=":jqmData(role='controlgroup')"><div role="heading" class="ui-controlgroup-label"><legend>Especificar tipo de usaurio</legend></div>
+<fieldset data-role="controlgroup" id="nivel" style="display:none" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-type="vertical" data-mini="false" data-init-selector=":jqmData(role='controlgroup')"><div role="heading" class="ui-controlgroup-label"></div>
 
   <div class="ui-controlgroup-controls">
                     
@@ -112,7 +124,7 @@ color: white !important;
                 <br />
 
 <a  href="#enviar" rel="#add_usuario" class="btn btn-success">Cargar</a>
-</form>
+
 
 <br />
 

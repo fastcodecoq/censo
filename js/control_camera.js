@@ -32,6 +32,8 @@ var pictureSource;   // Origen de la imagen
       // Se usan reglas CSS para dimensionar la imagen
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
+
+      
     }
 
     // Llamada cuando la foto se retorna sin problemas
