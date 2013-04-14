@@ -112,6 +112,17 @@ var socket = io.connect('http://apmontelibano.com:8888');
       }
 
 
+      function nivel_camb(){
+
+          $("#nivel input[type='radio']").change(function(){ 
+
+                $("input[name='nivel']").val($(this).val());
+
+             });
+
+      }
+
+
       function abrir( val ){
 
             $(val).css({ display : "block" });
@@ -203,9 +214,18 @@ var socket = io.connect('http://apmontelibano.com:8888');
       //================================
 
 
+      function ini(){
+
+        listHash(); 
+        nivel_camb();
+
+      }
+
 
        $(document).ready(function(){
 
-            listHash();  
+
+             ini();
+             
 
        });
