@@ -40,20 +40,6 @@ var socket = io.connect('http://apmontelibano.com:8888');
                                 case "local":
 
 
-                                       var call_ok = function( img ){
-
-                                            alert(img)
-
-                                       };
-
-
-                                       var call_error = function(){
-
-                                          alert("no se ha podido obtener la imagen");
-
-                                       };
-
-
                                        tomarFoto();
 
 
@@ -61,16 +47,6 @@ var socket = io.connect('http://apmontelibano.com:8888');
 
 
                                 case "recibo":
-
-                                    var call_ok = 
-
-
-                                       var call_error = function(){
-
-                                          alert("no se ha podido obtener la imagen");
-
-                                       };
-
 
                                        tomarFoto();
 
