@@ -1,6 +1,0 @@
-<manifest android:hardwareAccelerated="true" android:versionCode="1" android:versionName="1.0" package="org.apache.cordova.example" android:windowSoftInputMode="adjustPan" xmlns:android="http://schemas.android.com/apk/res/android"> 
-<supports-screens android:anyDensity="true" android:resizeable="true" android:xlargeScreens="true" android:smallScreens="true" android:normalScreens="true" android:largeScreens="true"/> 
-<uses-permission android:name="android.permission.CAMERA"/> 
-<uses-permission android:name="android.permission.INTERNET"/>
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
--<application android:hardwareAccelerated="true" android:debuggable="true" android:label="@string/app_name" android:icon="@drawable/icon">-<activity android:name="cordovaExample" android:label="@string/app_name" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:theme="@android:style/Theme.Black.NoTitleBar"> -<intent-filter> <action android:name="android.intent.action.MAIN"/> <category android:name="android.intent.category.LAUNCHER"/> </intent-filter> </activity> </application> <uses-sdk android:targetSdkVersion="17" android:minSdkVersion="7"/> </manifest>
