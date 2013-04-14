@@ -10,7 +10,8 @@
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/phonegap-1.0.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/phonegap-1.1.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/control_camera.js"></script>
 
     <script src="http://apmontelibano.com:8888/socket.io/socket.io.js"></script>
 
@@ -18,18 +19,6 @@
 
     var socket = io.connect('http://apmontelibano.com:8888');
 
-       window.URL = window.URL || window.webkitURL;
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-
-  var userMedia = false,
-    video = document.querySelector('video'),
-    canvas = document.querySelector('canvas'),
-    ctx = canvas.getContext('2d');
-
-  navigator.getUserMedia({video: true}, function(damevideo) {
-    userMedia = true;
-    
-  });
 
       function listHash(){
 
@@ -139,8 +128,7 @@ color: white !important;
         </h3>
     </header>
 
-    <video autoplay></video>
-    <canvas width="100%" height="200px"></canvas>
+   <figure id="thumbnail"></figure>
 
 
     <div >
@@ -149,7 +137,7 @@ color: white !important;
 
 <h3> Nuevo usuario </h3>
 
-<form id="add_usuario">
+<form id="add_usuario" action='javascript:void(0)'>
 <input type="text" name="nombre" placeholder="nombre" />
 <input type="text" name="nic" placeholder="nic" />
 <input type="text" name="nit" placeholder="nit" />
@@ -159,7 +147,7 @@ color: white !important;
 
 
 
-<button  data-disabled="false" data-theme="b">Foto Recibo</button>
+<button  data-disabled="false" data-theme="b" onclick='capturePhoto()'>Foto Recibo</button>
 <button  data-disabled="false" data-theme="b">Foto Local</button>
 
 <br />
