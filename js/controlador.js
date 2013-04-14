@@ -54,7 +54,7 @@ var socket = io.connect('http://apmontelibano.com:8888');
                                        };
 
 
-                                       tomarFoto(call_ok, call_error);
+                                       tomarFoto();
 
 
                                 break;
@@ -62,11 +62,7 @@ var socket = io.connect('http://apmontelibano.com:8888');
 
                                 case "recibo":
 
-                                    var call_ok = function( img ){
-
-                                              alert(img)
-
-                                       };
+                                    var call_ok = 
 
 
                                        var call_error = function(){
@@ -76,7 +72,7 @@ var socket = io.connect('http://apmontelibano.com:8888');
                                        };
 
 
-                                       tomarFoto(call_ok, call_error);
+                                       tomarFoto();
 
                                 break;
 
@@ -156,11 +152,21 @@ var socket = io.connect('http://apmontelibano.com:8888');
         }
 
 
-        function tomarFoto(call_ok , call_error) {
+        function tomarFoto() {
            
-              navigator.camera.getPicture( call_ok , call_error , { quality: 50 });
+              navigator.camera.getPicture( onSuccess , onFail , { quality: 50 });
 
           }
+
+
+
+ function onSuccess(imageURI) {
+      alert(imageURI);
+}
+
+function onFail(message) {
+    alert('Ocurrió un error: ' + message);
+}
 
 
       //===================================
