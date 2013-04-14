@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+
+ <head>
+
+ 		<meta charset="UTF-8" /> 
+
+<link rel="stylesheet" href="../../bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script src="http://apmontelibano.com:8888/socket.io/socket.io.js"></script>
+
+    <script> 
+
+    var socket = io.connect('http://apmontelibano.com:8888');
+
+       window.URL = window.URL || window.webkitURL;
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+
+  var userMedia = false,
+    video = document.querySelector('video'),
+    canvas = document.querySelector('canvas'),
+    ctx = canvas.getContext('2d');
+
+  navigator.getUserMedia({video: true}, function(damevideo) {
+    userMedia = true;
+    
+  });
+
+      function listHash(){
+
+
+          $("a[href^='#']").on("click", function(){
+
+                var cmd = $(this).attr("href").replace("#","");
+
+                switch(cmd){
+
+                    case "abrir": 
+
+                        var rel = $(this).attr("rel");
+
+                        abrir(rel);
+
+                    break;
+
+                    case "cerrar":
+
+                    var rel = $(this).attr("rel");
+
+                        cerrar(rel);
+
+                    break;
+
+                }
+
+
+          });
+
+
+      }
+
+
+      function abrir( val ){
+
+            $(val).css({ display : "block" });
+
+      }
+
+       function cerrar( val ){
+
+              $(val).css({ display : "none" });
+
+      }
+
+
+      function addUsuario(){
+
+
+
+
+      }
+
+       $(document).ready(function(){
+
+            listHash();  
+
+       });
+
+    </script> 
+
+
+    <style>
+
+
+      *{
+
+          font-size: 1.2em !important;
+
+      }
+
+       input[type='text']{
+
+          font-size: 1.3em !important;
+
+       }
+
+       .ui-controlgroup-controls{
+
+          font-size: .9em !important;
+
+       }
+
+
+      .btn{
+
+        display: block;
+padding: 1em;
+width: 93%;
+margin: 0 auto;
+color: white !important;
+
+       }
+     
+
+      </style>
+
+ </head>
+
+<body>
+
+    <header data-theme="b" data-role="header">
+        <h3>
+            Censo Apmontelibano
+        </h3>
+    </header>
+
+    <video autoplay></video>
+    <canvas width="100%" height="200px"></canvas>
+
+
+    <div >
+<input placeholder="Buscar..." data-type="search" class="ui-input-text ui-body-c" autocomplete="off" autocorrect="off">
+
+
+<h3> Nuevo usuario </h3>
+
+<form id="add_usuario">
+<input type="text" name="nombre" placeholder="nombre" />
+<input type="text" name="nic" placeholder="nic" />
+<input type="text" name="nit" placeholder="nit" />
+<input type="text" name="ancho" placeholder="ancho" />
+<input type="text" name="largo" placeholder="profundidad" />
+<br />
+
+
+
+<button  data-disabled="false" data-theme="b">Foto Recibo</button>
+<button  data-disabled="false" data-theme="b">Foto Local</button>
+
+<br />
+
+<a  href="#abrir" class="btn btn-success" rel="#nivel" data-theme="b" >Especificar nivel</a>
+
+<br />
+
+
+<fieldset data-role="controlgroup" id="nivel" style="display:none" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-type="vertical" data-mini="false" data-init-selector=":jqmData(role='controlgroup')"><div role="heading" class="ui-controlgroup-label"><legend>Especificar tipo de usaurio</legend></div>
+
+  <div class="ui-controlgroup-controls">
+                    
+                        <div class="ui-radio"><input type="radio" name="radio-choice-1" id="radio-choice-1" value="0" ><label for="radio-choice-1" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" data-mini="false" class="ui-first-child ui-radio-off ui-btn ui-btn-up-c ui-btn-corner-all ui-fullsize ui-btn-icon-left"><span class="ui-btn-inner"><span class="ui-btn-text">Nivel 0</span><span class="ui-icon ui-icon-radio-off ui-icon-shadow">&nbsp;</span></span></label></div>
+                        
+
+                        <div class="ui-radio"><input type="radio" name="radio-choice-1" checked="checked" id="radio-choice-2" value="1"><label for="radio-choice-2" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" data-mini="false" class="ui-radio-off ui-btn ui-btn-up-c ui-btn-corner-all ui-fullsize ui-btn-icon-left"><span class="ui-btn-inner"><span class="ui-btn-text">Nivel 1</span><span class="ui-icon ui-icon-radio-off ui-icon-shadow">&nbsp;</span></span></label></div>
+                        
+
+                        <div class="ui-radio"><input type="radio" name="radio-choice-1" id="radio-choice-3" value="2"><label for="radio-choice-3" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" data-mini="false" class="ui-radio-off ui-btn ui-btn-up-c ui-btn-corner-all ui-fullsize ui-btn-icon-left"><span class="ui-btn-inner"><span class="ui-btn-text">Nivel 2</span><span class="ui-icon ui-icon-radio-off ui-icon-shadow">&nbsp;</span></span></label></div>
+                        
+
+                        <div class="ui-radio"><input type="radio" name="radio-choice-1" id="radio-choice-4" value="3"><label for="radio-choice-4" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-on" data-theme="c" data-mini="false" class="ui-last-child ui-radio-on ui-btn ui-btn-corner-all ui-fullsize ui-btn-icon-left ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Nivel 3</span><span class="ui-icon ui-icon-radio-on ui-icon-shadow">&nbsp;</span></span></label></div>
+                        
+                </div></fieldset>
+
+
+                <br />
+
+<a  href="#enviar" rel="#add_usuario" class="btn btn-success">Cargar</button>
+</form>
+
+<br />
+
+    </div>
+
+
+    <footer data-theme="b" data-role="footer">
+         
+
+        <a href="#sincronizar">Sincronizar</a>
+
+    </footer>
+
+
+
+</body>
+
+</html>
