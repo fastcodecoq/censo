@@ -40,7 +40,21 @@ var socket = io.connect('http://apmontelibano.com:8888');
                                 case "local":
 
 
-                                       tomarFoto();
+                                       var call_ok = function( img ){
+
+                                            $("input[name='local']").val( img );
+
+                                       };
+
+
+                                       var call_error = function(){
+
+                                          alert("no se ha podido obtener la imagen");
+
+                                       };
+
+
+                                       tomarFoto(call_ok, call_error);
 
 
                                 break;
@@ -48,7 +62,26 @@ var socket = io.connect('http://apmontelibano.com:8888');
 
                                 case "recibo":
 
-                                       tomarFoto();
+                                    var call_ok = function( img ){
+
+                                            $("input[name='recibo']").val( img );
+
+                                       };
+
+
+
+                                       var call_error = function(){
+
+                                          alert("no se ha podido obtener la imagen");
+
+                                       };
+
+
+                                       tomarFoto( function( img ){
+
+                                              alert(img)
+
+                                       }, call_error);
 
                                 break;
 
@@ -128,21 +161,15 @@ var socket = io.connect('http://apmontelibano.com:8888');
         }
 
 
-        function tomarFoto() {
+        function tomarFoto(call_ok , call_error) {
            
-              navigator.camera.getPicture( onSuccess , onFail , { quality: 50 });
+              navigator.camera.getPicture( call_ok , call_error , { quality: 50 });
 
           }
 
 
 
- function onSuccess(imageURI) {
-      alert(imageURI);
-}
 
-function onFail(message) {
-    alert('Ocurrió un error: ' + message);
-}
 
 
       //===================================
