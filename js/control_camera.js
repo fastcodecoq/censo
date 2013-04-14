@@ -10,6 +10,8 @@ var pictureSource;   // Origen de la imagen
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
+
+        alert("ok")
     }
 
     // Llamada cuando la foto se retorna sin problemas
