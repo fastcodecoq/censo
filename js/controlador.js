@@ -88,7 +88,13 @@ var socket = io.connect('http://apmontelibano.com:8888');
 
                     case "cargar":
 
-                      checkConnection();
+                      var estado = checkConnection();                      
+
+                      if(!estado)
+                        alert("no hay conexion");
+                      else
+                        alert("Hay conexion");
+
 
                     break;
 
@@ -170,15 +176,15 @@ var socket = io.connect('http://apmontelibano.com:8888');
 
          var states = {};
 
-            states[Connection.UNKNOWN]  = 'Conexión desconocida';
-            states[Connection.ETHERNET] = 'Conexión ethernet';
-            states[Connection.WIFI]     = 'Conexión WiFi';
-            states[Connection.CELL_2G]  = 'Conexión movil 2G';
-            states[Connection.CELL_3G]  = 'Conexión movil 3G';
-            states[Connection.CELL_4G]  = 'Conexión movil 4G';
-            states[Connection.NONE]     = 'Sin conexión';
+            states[Connection.UNKNOWN]  = true;
+            states[Connection.ETHERNET] = true;
+            states[Connection.WIFI]     = true;
+            states[Connection.CELL_2G]  = true;
+            states[Connection.CELL_3G]  = true;
+            states[Connection.CELL_4G]  = true;
+            states[Connection.NONE]     = false;
 
-        alert('Tipo de conexión: ' + states[networkState]);
+        return  states[networkState];
 
     }
 
