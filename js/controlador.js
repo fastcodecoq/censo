@@ -44,6 +44,8 @@ var socket = io.connect('http://apmontelibano.com:8888');
 
                                             $("input[name='local']").val( img );
 
+                                            alert(img);
+
                                        };
 
 
@@ -65,6 +67,7 @@ var socket = io.connect('http://apmontelibano.com:8888');
                                     var call_ok = function( img ){
 
                                             $("input[name='recibo']").val( img );
+                                            alert(img);
 
                                        };
 
