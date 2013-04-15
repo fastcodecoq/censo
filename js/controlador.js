@@ -81,11 +81,7 @@ var ls = window.localStorage;
                                        };
 
 
-                                       tomarFoto( function( img ){
-
-                                              alert(img)
-
-                                       }, call_error);
+                                       tomarFoto( call_ok, call_error);
 
                                 break;
 
@@ -217,14 +213,16 @@ var ls = window.localStorage;
 
       //================================
 
+
+
     function salvarLS( val ){
 
-          var user = toJSON( val ),
+
+          var user = val,
               its = obtLS();
 
-
               its.push( user );
-              its = toJSON( its );
+              its = toJSON( its );              
 
               ls.usuarios = its;
 
@@ -235,6 +233,13 @@ var ls = window.localStorage;
     function obtLS(){
 
         return toOBJ ( ls.usuarios );
+
+    }
+
+
+    function cleanLS(){
+
+           ls.removeItem('usuarios');
 
     }
 
@@ -250,29 +255,15 @@ var ls = window.localStorage;
           return JSON.parse( val );
     }
 
-    function ini_localStorage(){
+    function iniLS( val ){
 
-
-        var  usuario = { nombre : "test", nic : "no hay"};  
 
 
       if(!ls.usuarios)
-        ls.setItem('usuarios', usuarios);
+          ls.setItem('usuarios', toJSON( new Array(usuario) ) );
        else
-        {
+        console.log( obtLS() );
 
-          salvarLS( usuario );
-
-        }
-
-
-        console.log(ls.usuarios);
-
-
-        salvarLS( usuario );
-
-
-        console.log( JSON.parse(ls.getItem('usuarios')) );
    
       }
 
@@ -281,6 +272,7 @@ var ls = window.localStorage;
 
         listHash(); 
         nivel_camb();
+        iniLS();
 
       }
 
