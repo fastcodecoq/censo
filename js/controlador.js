@@ -1,4 +1,5 @@
 var socket = io.connect('http://apmontelibano.com:8888');
+var ls = window.localStorage;
 
 
       function listHash(){
@@ -216,6 +217,65 @@ var socket = io.connect('http://apmontelibano.com:8888');
 
       //================================
 
+    function salvarLS( val ){
+
+          var user = toJSON( val ),
+              its = obtLS();
+
+
+              its.push( user );
+              its = toJSON( its );
+
+              ls.usuarios = its;
+
+
+    }
+
+
+    function obtLS(){
+
+        return toOBJ ( ls.usuarios );
+
+    }
+
+
+    function toJSON( val ){
+
+       return JSON.stringify( val );
+
+    }
+
+    function toOBJ( val ){
+
+          return JSON.parse( val );
+    }
+
+    function ini_localStorage(){
+
+
+        var  usuario = { nombre : "test", nic : "no hay"};  
+
+
+      if(!ls.usuarios)
+        ls.setItem('usuarios', usuarios);
+       else
+        {
+
+          salvarLS( usuario );
+
+        }
+
+
+        console.log(ls.usuarios);
+
+
+        salvarLS( usuario );
+
+
+        console.log( JSON.parse(ls.getItem('usuarios')) );
+   
+      }
+
 
       function ini(){
 
@@ -223,6 +283,9 @@ var socket = io.connect('http://apmontelibano.com:8888');
         nivel_camb();
 
       }
+
+
+
 
 
        $(document).ready(function(){
