@@ -260,7 +260,7 @@ var ls = window.localStorage;
 
 
       if(!ls.usuarios)
-          ls.setItem('usuarios', toJSON( new Array(usuario) ) );
+          ls.setItem('usuarios', toJSON( new Array() ) );
        else
         console.log( obtLS() );
 
