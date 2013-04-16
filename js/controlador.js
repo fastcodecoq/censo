@@ -289,9 +289,10 @@ var count = 1;
 
       function nivel_camb(){
 
-          $("#nivel input[type='radio']").change(function(){ 
+          $("#nivel_ button").click(function(){ 
 
-                $("input[name='nivel']").val($(this).val());
+
+                $("input[name='nivel']").val( $(this).attr("rel") );
 
              });
 

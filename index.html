@@ -5,12 +5,15 @@
 
  		<meta charset="UTF-8" /> 
 
-<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
 <link rel="stylesheet" type="text/css" href="fontAwesome/css/font-awesome.css" />
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+<script src="js/bootstrap.js"></script>
 
 <script src="http://apmontelibano.com:8888/socket.io/socket.io.js"></script>
 <script src="phonegap.js"></script>
@@ -24,7 +27,16 @@
     <style>
 
 
-      .btn{
+    body{
+
+       left:0;
+       font-size: 1.1em;
+       background: rgba(235, 235, 235, 0.1);
+
+    }
+
+
+      a.btn{
 
         display: block;
 padding: 1em;
@@ -33,25 +45,70 @@ margin: 0 auto;
 color: white !important;
 
        }
+
+
+       #add_usuario input{
+
+
+        width: 91%;
+margin-left: 4%;
+padding: 1em .5em;
+margin-bottom: 1em;
+
+       }
+
+       #nivel_ .btn{
+
+         width: 5em;
+         padding: 0.5em;
+
+       }
+
+
+       @media (max-width: 480px) { 
+
+
+          #nivel_{
+
+            margin-left: 15% !important;
+
+          }
+
+
+        }
+
+
+        @media (max-width: 767px) { 
+
+
+            #nivel_{
+
+            margin-left: 15% !important;
+
+          }
+
+         }
      
 
       </style>
 
  </head>
 
-<body>
+<body clas='container'>
 
-    <header data-theme="b" data-role="header">
-        <h3>
+    <header class='btn-primary' style='padding: .5em 0; width:100%'>
+        <h3 style='text-align:center'>
             Censo Apmontelibano
         </h3>
     </header>
 
 
-    <div >
+    <div style="padding: 3em" >
 
 
-<form id="add_usuario" action='javascript:void(0)'>
+
+
+<form id="add_usuario" action='javascript:void(0)' >
 
 <input type="text" name="nombre" class='require' placeholder="* nombre" /> <br />
 <input type="text" name="nic" class='require' placeholder="* nic" /><br />
@@ -64,6 +121,7 @@ color: white !important;
 
 </form>
 
+
 <br />
 
 
@@ -74,31 +132,22 @@ color: white !important;
 <br />
 <br />
 
-<a  href="#abrir" class="btn btn-success" rel="#nivel" data-theme="b" >Especificar nivel</a>
+<a  href="#abrir" class="btn btn-success" rel="#nivel_" data-theme="b" >Especificar nivel</a>
 
+
+
+ <div class="btn-group " id='nivel_' style='margin:0 auto; display:none; margin-left: 39%;' data-toggle="buttons-radio">
+   <br />
+  <button type="button" class="btn " rel='0'>Nivel 0</button>
+  <button type="button" class="btn " rel='1'>Nivel 1</button>
+  <button type="button" class="btn " rel='2'>Nivel 2</button>
+  <button type="button" class="btn " rel='3'>Nivel 3</button>
+  <br />
+                <br />
+</div>
 
 <br />
-
-
-<fieldset data-role="controlgroup" id="nivel" style="display:none" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-type="vertical" data-mini="false" data-init-selector=":jqmData(role='controlgroup')"><div role="heading" class="ui-controlgroup-label"></div>
-
-  <div class="ui-controlgroup-controls">
-                    
-                        <div class="ui-radio"><input type="radio" name="radio-choice-1" id="radio-choice-1" value="0" ><label for="radio-choice-1" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" data-mini="false" class="ui-first-child ui-radio-off ui-btn ui-btn-up-c ui-btn-corner-all ui-fullsize ui-btn-icon-left"><span class="ui-btn-inner"><span class="ui-btn-text">Nivel 0</span><span class="ui-icon ui-icon-radio-off ui-icon-shadow">&nbsp;</span></span></label></div>
-                        
-
-                        <div class="ui-radio"><input type="radio" name="radio-choice-1" checked="checked" id="radio-choice-2" value="1"><label for="radio-choice-2" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" data-mini="false" class="ui-radio-off ui-btn ui-btn-up-c ui-btn-corner-all ui-fullsize ui-btn-icon-left"><span class="ui-btn-inner"><span class="ui-btn-text">Nivel 1</span><span class="ui-icon ui-icon-radio-off ui-icon-shadow">&nbsp;</span></span></label></div>
-                        
-
-                        <div class="ui-radio"><input type="radio" name="radio-choice-1" id="radio-choice-3" value="2"><label for="radio-choice-3" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" data-mini="false" class="ui-radio-off ui-btn ui-btn-up-c ui-btn-corner-all ui-fullsize ui-btn-icon-left"><span class="ui-btn-inner"><span class="ui-btn-text">Nivel 2</span><span class="ui-icon ui-icon-radio-off ui-icon-shadow">&nbsp;</span></span></label></div>
-                        
-
-                        <div class="ui-radio"><input type="radio" name="radio-choice-1" id="radio-choice-4" value="3"><label for="radio-choice-4" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-on" data-theme="c" data-mini="false" class="ui-last-child ui-radio-on ui-btn ui-btn-corner-all ui-fullsize ui-btn-icon-left ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Nivel 3</span><span class="ui-icon ui-icon-radio-on ui-icon-shadow">&nbsp;</span></span></label></div>
-                        
-                </div></fieldset>
-
-
-                <br />
+                
 
 <a  href="#cargar" rel="#add_usuario" class="btn btn-success">Cargar</a>
 
@@ -108,10 +157,17 @@ color: white !important;
     </div>
 
 
-    <footer data-theme="b" data-role="footer">
+    <footer class="btn-primary" style='padding: .5em 0;'>
          
 
-        <a href="#sincronizar" style="border:0 !important">Sincronizar <i class='icon icon-refresh'></i></a>
+        <a href="#sincronizar" class='btn ' style="border: 0 !important;
+width: auto;
+background: none;
+box-shadow: none;
+border: 0;
+font-size: 2em;
+line-height: 1px;
+padding-top: .7em;">Sincronizar <i class='icon icon-refresh'></i></a>
 
     </footer>
 
