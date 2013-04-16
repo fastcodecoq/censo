@@ -350,7 +350,7 @@ var count = 1;
 
         function tomarFoto(call_ok , call_error) {
            
-              navigator.camera.getPicture( call_ok , call_error , { quality: 50, destinationType: Camera.DestinationType.FILE_URI } );
+              navigator.camera.getPicture( call_ok , call_error , { quality: 50 } );
 
           }
 
