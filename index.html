@@ -53,14 +53,14 @@ color: white !important;
 
 <form id="add_usuario" action='javascript:void(0)'>
 
-<input type="text" name="nombre" placeholder="nombre" />
-<input type="text" name="nic" placeholder="nic" />
-<input type="text" name="nit" placeholder="nit" />
-<input type="text" name="ancho" placeholder="ancho" />
-<input type="text" name="largo" placeholder="profundidad" />
-<input type="hidden" name="recibo"  />
-<input type="hidden" name="local"  />
-<input type="hidden" name="nivel"  />
+<input type="text" name="nombre" class='require' placeholder="* nombre" />
+<input type="text" name="nic" class='require' placeholder="* nic" />
+<input type="text" name="nit"  placeholder="nit" />
+<input type="text" name="ancho" class='require' placeholder="* ancho (en metros)" />
+<input type="text" name="largo" class='require' placeholder="* profundidad (en metros)" />
+<input type="hidden" name="recibo" value ='no hay'  />
+<input type="hidden" name="local"  value = 'no hay'/>
+<input type="hidden" name="nivel" class='require' value ='1' />
 
 </form>
 

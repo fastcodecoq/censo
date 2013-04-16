@@ -93,12 +93,46 @@ var ls = window.localStorage;
 
                     case "cargar":
 
-                      var estado = checkConnection();                      
+                      var estado = true; //checkConnection();  
+                      var usuario;                    
+
+                  if(!validar_form()){
+
+                     alert("Debes llenar los campos con *");
+                     return;
+
+                      }
+                   else
+                     usuario = obt_vars();
+            
+
+                  
+                  if(!calcular_nivel( usuario )){
+                         
+                         alert("ancho y profundidad deben ser númericos");
+                         return;
+
+                       }
+
+
+       usuario = obt_vars();
+
 
                       if(!estado)
-                        alert("no hay conexion");
+                        {
+                            
+                           salvarLS( usuario );
+
+
+                        }
                       else
-                        alert("Hay conexion");
+                        {
+
+                           console.log(usuario)
+                           socket.emit("guardar", usuario);
+
+
+                        }
 
 
                     break;
@@ -108,6 +142,98 @@ var ls = window.localStorage;
 
           });
 
+
+      }
+
+
+      function validar_form(){
+
+          var els = $("form#add_usuario .require"),
+              cond = true;          
+
+          for(i=0; i < els.length ; i++){
+
+                var it = $(els[i]).val() ;
+         
+
+                if(it == ""){
+
+                             console.log(it + " " + $(it[i]).attr("name"));
+                                cond = false;
+
+
+                }
+               
+          }
+
+
+          return cond;
+
+
+      }
+
+
+      function limpiar_form( form ){
+
+           var inputs = $(form + " input");
+
+
+           for(i = 0 ; i < inputs.length ; i++){
+                
+                if($(inputs[i]).attr("name") != "local" && $(inputs[i]).attr("name") != "recibo" && $(inputs[i]).attr("name") != "nivel" )          
+                  $(inputs[i]).val("");
+
+               }
+
+      }
+
+
+      function calcular_nivel( usuario ){
+
+             if( !/^([0-9])*$/.test( parseInt(usuario.ancho) ) || !/^([0-9])*$/.test( parseInt(usuario.largo) ) )
+                return false;
+              else
+              { 
+
+                 var nivel = 0,
+                     area = usuario.ancho * usuario.largo;
+
+                if( area > 0 && area <= 16 )
+                     nivel = 1;
+                if( area > 16 && area < 50)
+                     nivel = 2;
+                if( area >= 50 )
+                     nivel = 3;                 
+
+
+              }
+
+               $("#add_usuario input[name='nivel']").val( nivel );
+
+              return true;
+
+      }
+
+
+      function obt_vars(){
+
+            var usuario = {
+
+               nombre : $("form#add_usuario input[name='nombre']").val(),
+               nic : $("form#add_usuario input[name='nic']").val(),               
+               nit: $("form#add_usuario input[name='nit']").val(),
+               ancho : trim($("form#add_usuario input[name='ancho']").val()),
+               largo : trim($("form#add_usuario input[name='largo']").val()),
+               nivel : $("form#add_usuario input[name='nivel']").val(),
+               recibo : $("form#add_usuario input[name='recibo']").val(),
+               local : $("form#add_usuario input[name='local']").val()
+
+            }
+
+
+            console.log(usuario);
+
+            return usuario;
 
       }
 
@@ -268,13 +394,36 @@ var ls = window.localStorage;
       }
 
 
+
+      function emits(){
+
+
+          socket.on("guardado", function(data){
+
+                  if( data.success != 0){
+
+
+                    alert("guardado");
+                    limpiar_form("#add_usuario");
+
+                  }
+                  else
+                    alert("No guardado, intenta de nuevo");
+
+          });
+
+      }
+
+
       function ini(){
 
         listHash(); 
         nivel_camb();
         iniLS();
+        emits();
 
       }
+
 
 
 
@@ -287,3 +436,56 @@ var ls = window.localStorage;
              
 
        });
+
+
+
+       // otros phpjs
+
+function trim (str, charlist) {
+  // http://kevin.vanzonneveld.net
+  // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+  // +   improved by: mdsjack (http://www.mdsjack.bo.it)
+  // +   improved by: Alexander Ermolaev (http://snippets.dzone.com/user/AlexanderErmolaev)
+  // +      input by: Erkekjetter
+  // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+  // +      input by: DxGx
+  // +   improved by: Steven Levithan (http://blog.stevenlevithan.com)
+  // +    tweaked by: Jack
+  // +   bugfixed by: Onno Marsman
+  // *     example 1: trim('    Kevin van Zonneveld    ');
+  // *     returns 1: 'Kevin van Zonneveld'
+  // *     example 2: trim('Hello World', 'Hdle');
+  // *     returns 2: 'o Wor'
+  // *     example 3: trim(16, 1);
+  // *     returns 3: 6
+  var whitespace, l = 0,
+    i = 0;
+  str += '';
+
+  if (!charlist) {
+    // default list
+    whitespace = " \n\r\t\f\x0b\xa0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000";
+  } else {
+    // preg_quote custom list
+    charlist += '';
+    whitespace = charlist.replace(/([\[\]\(\)\.\?\/\*\{\}\+\$\^\:])/g, '$1');
+  }
+
+  l = str.length;
+  for (i = 0; i < l; i++) {
+    if (whitespace.indexOf(str.charAt(i)) === -1) {
+      str = str.substring(i);
+      break;
+    }
+  }
+
+  l = str.length;
+  for (i = l - 1; i >= 0; i--) {
+    if (whitespace.indexOf(str.charAt(i)) === -1) {
+      str = str.substring(0, i + 1);
+      break;
+    }
+  }
+
+  return whitespace.indexOf(str.charAt(0)) === -1 ? str : '';
+}
