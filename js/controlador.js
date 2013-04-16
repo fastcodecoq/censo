@@ -1,5 +1,7 @@
 var socket = io.connect('http://apmontelibano.com:8888');
 var ls = window.localStorage;
+var it_sinc = 0;
+var count = 1;
 
 
       function listHash(){
@@ -118,10 +120,14 @@ var ls = window.localStorage;
        usuario = obt_vars();
 
 
-                      if(!estado)
+                      if(estado)
                         {
                             
-                           salvarLS( usuario );
+                           salvarLS( usuario , function(){
+
+                                alert("Sin conexion: Guardado localmente. Cuando halla cobertura pulse Sincronizar");
+
+                           });
 
 
                         }
@@ -129,11 +135,18 @@ var ls = window.localStorage;
                         {
 
                            console.log(usuario)
-                           socket.emit("guardar", usuario);
+                           socket.emit("guardar", { info : usuario, tipo: "normal"} );
 
 
                         }
 
+
+                    break;
+
+
+                    case "sincronizar":
+
+                        sincronizar();
 
                     break;
 
@@ -168,6 +181,33 @@ var ls = window.localStorage;
 
 
           return cond;
+
+
+      }
+
+
+
+      function sincronizar(){
+
+
+               info = obtLS();
+               it_sinc = info.length;
+
+               if(!info.length > 0){
+                
+                  alert("No hay datos locales para sincronizar");
+                  return false;
+
+                }
+
+               for( i = 0 ; i < info.length ; i++){
+
+                   socket.emit("guardar", { info : info[i], tipo: "sincro" } );
+
+               }
+
+
+               cleanLS();
 
 
       }
@@ -341,7 +381,7 @@ var ls = window.localStorage;
 
 
 
-    function salvarLS( val ){
+    function salvarLS( val , callback ){
 
 
           var user = val,
@@ -350,7 +390,11 @@ var ls = window.localStorage;
               its.push( user );
               its = toJSON( its );              
 
-              ls.usuarios = its;
+              ls.usuarios = its;    
+
+
+              if(callback)
+                   callback();          
 
 
     }
@@ -366,6 +410,7 @@ var ls = window.localStorage;
     function cleanLS(){
 
            ls.removeItem('usuarios');
+           iniLS();
 
     }
 
@@ -395,16 +440,47 @@ var ls = window.localStorage;
 
 
 
-      function emits(){
+      function ons(){
 
+        
 
           socket.on("guardado", function(data){
 
-                  if( data.success != 0){
+                  console.log(data);
+         
 
+                  if( data.success != 0){
+   
+                   switch(data.tipo){
+
+                    case "normal":
 
                     alert("guardado");
                     limpiar_form("#add_usuario");
+
+                    break;
+
+
+                    case "sincro":
+
+
+                    console.log(it_sinc + " == " + count);
+
+                      if(count == it_sinc){
+                         
+                         alert("Se ha sincronizado correctamente");
+                         count = 1;
+
+                       }
+
+
+                       count++;
+
+                    break;
+
+
+                   }
+                   
 
                   }
                   else
@@ -420,7 +496,7 @@ var ls = window.localStorage;
         listHash(); 
         nivel_camb();
         iniLS();
-        emits();
+        ons();
 
       }
 
