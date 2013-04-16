@@ -4,7 +4,7 @@ Censo APmontelíbano
 App móvil para el censo de locales comerciales de Montelíbano
 
 
-
+_____________________________________________________
 
 
 
@@ -33,10 +33,10 @@ ANDROID - IOS - BBOS 4.x > - PALM OS - WEB OS
 
 
 Particularidades de android:
-___________________________
 
 * en la versión 2.3 el api Camera no funciona correctamente (en el callback arroja un error)
 
+________________________________
 
 
 
