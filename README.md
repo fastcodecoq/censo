@@ -13,14 +13,15 @@ _____________________________________________________
 Lenguajes usados
 ================
 
-HTML5 - JAVSCRIPT (JQUERY, JQUERY MOBILE Y JS PURO) - NODE.JS (MONGOOSE - SOCKET.IO) - CSS3
+HTML5 - JAVSCRIPT (JQUERY, JQUERY MOBILE, MODERNIZR Y JS PURO) - NODE.JS (MONGOOSE - SOCKET.IO) - CSS3
 
 
 
 Frameworks
 ==========
 
-JQUERY - JQUERY MOBILE - PHONEGAP
+JQUERY - JQUERY MOBILE - PHONEGAP - Bootstrap - fontAwesome - lesscss
+
 
 
 
