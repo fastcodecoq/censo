@@ -200,6 +200,15 @@ var count = 1;
 
                 }
 
+
+                if( !checkConnection )
+                    {
+
+                       alert("Para sincronizar debes tener cobertura");
+                       return false;
+
+                    }
+
                for( i = 0 ; i < info.length ; i++){
 
                    socket.emit("guardar", { info : info[i], tipo: "sincro" } );
