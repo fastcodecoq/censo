@@ -201,7 +201,7 @@ var count = 1;
                 }
 
 
-                if( !checkConnection )
+                if( !checkConnection() )
                     {
 
                        alert("Para sincronizar debes tener cobertura");
