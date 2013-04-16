@@ -95,7 +95,7 @@ var count = 1;
 
                     case "cargar":
 
-                      var estado = true; //checkConnection();  
+                      var estado = checkConnection();  
                       var usuario;                    
 
                   if(!validar_form()){
@@ -120,7 +120,7 @@ var count = 1;
        usuario = obt_vars();
 
 
-                      if(estado)
+                      if(!estado)
                         {
                             
                            salvarLS( usuario , function(){
