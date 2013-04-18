@@ -45,7 +45,7 @@ var count = 1;
 
                                        var call_ok = function( imgData ){
 
-                                            $("input[name='local']").val( "data:image/jpeg;base64," + imgData.toString() );
+                                            $("input[name='local']").val( imgData );
                                             alert("La imagen se ha obtenido con exito");
 
                                        };
@@ -68,7 +68,7 @@ var count = 1;
 
                                     var call_ok = function( imgData){
 
-                                            $("input[name='recibo']").val( "data:image/jpeg;base64," + imgData.toString() );
+                                            $("input[name='recibo']").val( imgData );
                                             alert("La imagen se ha obtenido con exito");
 
                                        };
@@ -281,8 +281,8 @@ var count = 1;
                nit: $("form#add_usuario input[name='nit']").val(),
                ancho : trim($("form#add_usuario input[name='ancho']").val()),
                largo : trim($("form#add_usuario input[name='largo']").val()),
-               nivel : $("form#add_usuario input[name='nivel']").val().toString(),
-               recibo : $("form#add_usuario input[name='recibo']").val().toString(),
+               nivel : $("form#add_usuario input[name='nivel']").val(),
+               recibo : $("form#add_usuario input[name='recibo']").val(),
                local : $("form#add_usuario input[name='local']").val()
 
             }
