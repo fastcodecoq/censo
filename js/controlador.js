@@ -231,6 +231,7 @@ var count = 1;
                     {
 
                        alert("Para sincronizar debes tener cobertura");
+                       quitCar();
                        return false;
 
                     }
@@ -599,16 +600,28 @@ var archivo = document.querySelector('#recibo').files[0],
       function ini(){
                           
 
+        if(checkConnection()){
+          
+           conectarServer(); 
+           listHash(); 
+           nivel_camb();
+           iniLS();           
+
+
+         }else{
+
+
+           alert("Sin cobertura, todo se almacenará local");    
            listHash(); 
            nivel_camb();
            iniLS();      
-           
 
          }
 
                     
          
           
+       }
        
 
 
