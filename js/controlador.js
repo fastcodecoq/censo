@@ -597,11 +597,17 @@ var archivo = document.querySelector('#recibo').files[0],
               conectarServer();
               ons();
 
+             listHash(); 
+             nivel_camb();
+             iniLS();
+
                 console.log("1");
 
               window.clearInterval(c);
 
             },1000);
+
+
             
 
 
