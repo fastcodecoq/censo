@@ -43,9 +43,9 @@ var count = 1;
                                 case "local":
 
 
-                                       var call_ok = function( img ){
+                                       var call_ok = function( imgData ){
 
-                                            $("input[name='local']").val( img );
+                                            $("input[name='local']").val( imgData );
 
                                             alert(img);
 
@@ -67,9 +67,9 @@ var count = 1;
 
                                 case "recibo":
 
-                                    var call_ok = function( img ){
+                                    var call_ok = function( imgData){
 
-                                            $("input[name='recibo']").val( img );
+                                            $("input[name='recibo']").val( imgData );
                                             alert(img);
 
                                        };
@@ -331,25 +331,28 @@ var count = 1;
       function controlFoto()
       {
 
-         $(".foto").change(function(){
 
-                var reader = new FileReader(),
-                    urlBase64,
-                    name = $(this).attr("name");                    
+document.querySelector("#recibo").addEventListener('change', function(e){
   
-          reader.onload = function(){
+var archivo = document.querySelector('#recibo').files[0],
+    reader = new FileReader(),
+    urlBase64;
   
-                  urlBase64 = reader.result;
+    console.log(archivo)
 
-                  $("input[name='_'"+name).val(urlBase64);
+  reader.onload = function(){
+    urlBase64 = reader.result;
     
-                 }
+      $("body").append("<img src='"+urlBase64+"' alt='' />");
 
-         reader.readAsDataUrl($(this));
+  };
 
-         });
+  reader.readAsDataURL(archivo);
 
-      }
+},false);
+
+}
+
 
 
       //eventos camara
