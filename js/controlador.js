@@ -605,6 +605,17 @@ var archivo = document.querySelector('#recibo').files[0],
             
 
 
+         }else{
+
+
+           alert("Sin cobertura, todo se almacenará local");
+
+           listHash(); 
+           nivel_camb();
+           iniLS();
+         
+
+
          }
           
        }
@@ -625,16 +636,12 @@ var archivo = document.querySelector('#recibo').files[0],
             },1000);
 
 
+            alert("Sin cobertura, modo desktop");
+
+
         }
 
 
-         if(!socket)
-            alert("Sin cobertura, todo se almacenará local");
-
-        listHash(); 
-        nivel_camb();
-        iniLS();
-         
 
       }
 
