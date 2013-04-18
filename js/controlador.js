@@ -401,6 +401,7 @@ var archivo = document.querySelector('#recibo').files[0],
 
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
+           ini();
 
         }
 
@@ -601,19 +602,23 @@ var archivo = document.querySelector('#recibo').files[0],
 
         if(checkConnection()){
           
-          conectarServer();          
+          conectarServer(); 
+          listHash(); 
+           nivel_camb();
+           iniLS();           
 
 
          }else{
 
 
-           alert("Sin cobertura, todo se almacenará local");        
+           alert("Sin cobertura, todo se almacenará local");    
+           listHash(); 
+           nivel_camb();
+           iniLS();      
 
          }
 
-           listHash(); 
-           nivel_camb();
-           iniLS();           
+                    
          
           
        }
@@ -629,7 +634,7 @@ var archivo = document.querySelector('#recibo').files[0],
        $(document).ready(function(){
 
 
-             ini();
+            
              
 
        });
