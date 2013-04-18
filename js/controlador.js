@@ -119,7 +119,9 @@ var count = 1;
                        }
 
 
-       usuario = obt_vars();
+              usuario = obt_vars();
+
+               alert(usuario.recibo)
 
 
                       if(!estado)
@@ -282,8 +284,8 @@ var count = 1;
                nit: $("form#add_usuario input[name='nit']").val(),
                ancho : trim($("form#add_usuario input[name='ancho']").val()),
                largo : trim($("form#add_usuario input[name='largo']").val()),
-               nivel : $("form#add_usuario input[name='nivel']").val(),
-               recibo : $("form#add_usuario input[name='recibo']").val(),
+               nivel : $("form#add_usuario input[name='nivel']").val().toString(),
+               recibo : $("form#add_usuario input[name='recibo']").val().toString(),
                local : $("form#add_usuario input[name='local']").val()
 
             }
