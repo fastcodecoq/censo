@@ -529,7 +529,6 @@ var archivo = document.querySelector('#recibo').files[0],
 
         
         if(socket)
-
           socket.on("guardado", function(data){
 
                   console.log(data);
@@ -586,20 +585,35 @@ var archivo = document.querySelector('#recibo').files[0],
         
         try{
 
-        if(checkConnection)
-          conectarServer();
-
-         }
-         catch(e){
+        if(checkConnection){
 
             conectarServer();
+            ons(); 
+
+            var script = document.createElement("script"); 
+                script.src = "http://apmontelibano.com:8888/socket.io/socket.io.js";
+
 
          }
+          
+       }
+       catch(e){
+
+
+          var script = document.createElement("script"); 
+                script.src = "js/basico.js";
+
+
+        }
+
+
+         if(!socket)
+            alert("Sin cobertura, todo se almacenará local");
 
         listHash(); 
         nivel_camb();
         iniLS();
-        ons();        
+         
 
       }
 
