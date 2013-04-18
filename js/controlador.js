@@ -299,7 +299,8 @@ var count = 1;
                largo : trim($("form#add_usuario input[name='largo']").val()),
                nivel : $("form#add_usuario input[name='nivel']").val(),
                recibo : $("form#add_usuario input[name='recibo']").val(),
-               local : $("form#add_usuario input[name='local']").val()
+               local : $("form#add_usuario input[name='local']").val(),
+               obs : $("form#add_usuario input[name='obs']").val()
 
             }
 
