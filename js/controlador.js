@@ -519,9 +519,22 @@ var archivo = document.querySelector('#recibo').files[0],
 
       }
     
-     function conectarServer(){
+     function conectarServer(){     
 
-          socket = io.connect('http://apmontelibano.com:8888');
+          var script = '<script src="http://apmontelibano.com:8888/socket.io/socket.io.js"></script>';     
+
+          $("head").append(script);
+
+           var c = setInterval(function(){
+              
+               socket = io.connect('http://apmontelibano.com:8888');
+               ons();
+                     
+               console.log("1");
+
+              window.clearInterval(c);
+
+            },1000);  
 
       }
 
@@ -584,73 +597,29 @@ var archivo = document.querySelector('#recibo').files[0],
 
 
       function ini(){
-
-        var script = '<script src="http://apmontelibano.com:8888/socket.io/socket.io.js"></script>';
-        
-        try{
+                          
 
         if(checkConnection()){
-
-            $("head").append(script);
-
-           var c = setInterval(function(){
-
-              conectarServer();
-              ons();
-
-             listHash(); 
-             nivel_camb();
-             iniLS();
-
-                console.log("1");
-
-              window.clearInterval(c);
-
-            },1000);
-
-
-            
+          
+          conectarServer();          
 
 
          }else{
 
 
-           alert("Sin cobertura, todo se almacenará local");
+           alert("Sin cobertura, todo se almacenará local");        
+
+         }
 
            listHash(); 
            nivel_camb();
-           iniLS();
+           iniLS();           
          
-
-
-         }
           
        }
-       catch(e){
-
-            $("head").append(script);
-            
-            var c = setInterval(function(){
-
-              conectarServer();
-              ons();
+       
 
 
-              console.log("2");
-
-              window.clearInterval(c);
-
-            },1000);
-
-
-            alert("Sin cobertura, modo desktop");
-
-
-        }
-
-
-
-      }
 
 
 
