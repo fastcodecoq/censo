@@ -1,4 +1,4 @@
-var socket = io.connect('http://apmontelibano.com:8888');
+var socket = false;
 var ls = window.localStorage;
 var it_sinc = 0;
 var count = 1;
@@ -348,6 +348,9 @@ var count = 1;
       }
 
 
+
+
+
       function controlFoto()
       {
 
@@ -498,14 +501,20 @@ var archivo = document.querySelector('#recibo').files[0],
 
       function showCar(){
 
-          $(".cargando").css({display:block});
+          $(".cargando").css({display: "block"});
 
       }
 
 
       function quitCar(){
 
-         $(".cargando").css({display:none});
+         $(".cargando").css({display: "none"});
+
+      }
+    
+     function conectarServer(){
+
+          socket = io.connect('http://apmontelibano.com:8888');
 
       }
 
@@ -514,6 +523,7 @@ var archivo = document.querySelector('#recibo').files[0],
       function ons(){
 
         
+        if(socket)
 
           socket.on("guardado", function(data){
 
@@ -563,10 +573,23 @@ var archivo = document.querySelector('#recibo').files[0],
 
           });
 
+
       }
 
 
       function ini(){
+        
+        try{
+
+        if(checkConnection)
+          conectarServer();
+
+         }
+         catch(e){
+
+            conectarServer();
+
+         }
 
         listHash(); 
         nivel_camb();
