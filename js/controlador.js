@@ -274,8 +274,8 @@ var count = 1;
                ancho : trim($("form#add_usuario input[name='ancho']").val()),
                largo : trim($("form#add_usuario input[name='largo']").val()),
                nivel : $("form#add_usuario input[name='nivel']").val(),
-               recibo : $("form#add_usuario input[name='recibo']").val(),
-               local : $("form#add_usuario input[name='local']").val()
+               recibo : $("form#add_usuario input[name='_recibo']").val(),
+               local : $("form#add_usuario input[name='_local']").val()
 
             }
 
@@ -334,13 +334,14 @@ var count = 1;
          $(".foto").change(function(){
 
                 var reader = new FileReader(),
-                    urlBase64;
+                    urlBase64,
+                    name = $(this).attr("name");                    
   
           reader.onload = function(){
   
-                 urlBase64 = reader.result;
+                  urlBase64 = reader.result;
 
-                  $(this).val(urlBase64);
+                  $("input[name='_'"+name).val(urlBase64);
     
                  }
 
