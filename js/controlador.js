@@ -139,6 +139,7 @@ var count = 1;
                            salvarLS( usuario , function(){
 
                                 alert("Sin conexion: Guardado localmente. Cuando halla cobertura pulse Sincronizar");
+                                quitCar();
 
                            });
 
