@@ -43,6 +43,14 @@
     }
 
 
+    form{
+
+        font-size: .76em;
+color: rgba(0, 0, 0, 0.61);
+
+    }
+
+
       a.btn{
 
 display: block;
@@ -165,13 +173,18 @@ margin-bottom: 1em;
 
 <form id="add_usuario" action='javascript:void(0)' >
 
-<input type="text" name="nombre" class='require' placeholder="* nombre" /> <br />
-<input type="text" name="nic" class='require' placeholder="* nic" /><br />
+<span>Nombre</pan>
+<input type="text" name="nombre" class='require' placeholder="* Comercial" /> <br />
+<span>Nic</pan>
+<input type="text" name="nic" class='require' placeholder="* 456271" /><br />
+<span>Nit</pan>
 <input type="text" name="nit"  placeholder="nit" /><br />
-<input type="text" name="ancho" class='require' placeholder="* ancho (en metros)" /><br />
-<input type="text" name="largo" class='require' placeholder="* profundidad (en metros)" /><br />
-<input type="hideen" name="local"  value = 'no hay'/>
-<input type="hidden" name="recibo"  value = 'no hay'/>
+<span>Lado 1 (en mts)</pan>
+<input type="text" name="ancho" class='require' placeholder="* 6" /><br />
+<span>Lado 2 (en mts)</pan>
+<input type="text" name="largo" class='require' placeholder="* 7" /><br />
+<input type="hidden" name="local"    value='0' />
+<input type="hidden" name="recibo"  value='0' />
 <input type="hidden" name="nivel" class='require' value ='1' />
 
 </form>

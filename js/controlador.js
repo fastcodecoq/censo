@@ -145,7 +145,7 @@ var count = 1;
                       }
                       catch(e){
 
-                          alert(e);
+                          alert("error");
 
                       }
 
@@ -283,8 +283,8 @@ var count = 1;
                ancho : trim($("form#add_usuario input[name='ancho']").val()),
                largo : trim($("form#add_usuario input[name='largo']").val()),
                nivel : $("form#add_usuario input[name='nivel']").val(),
-               recibo : $("form#add_usuario input[name='_recibo']").val(),
-               local : $("form#add_usuario input[name='_local']").val()
+               recibo : $("form#add_usuario input[name='recibo']").val(),
+               local : $("form#add_usuario input[name='local']").val()
 
             }
 
