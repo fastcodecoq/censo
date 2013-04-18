@@ -407,6 +407,8 @@ var archivo = document.querySelector('#recibo').files[0],
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
 
+          ini();
+
         }
 
 
@@ -640,7 +642,7 @@ var archivo = document.querySelector('#recibo').files[0],
        $(document).ready(function(){
 
 
-             ini();
+             
              
 
        });
