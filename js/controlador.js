@@ -46,6 +46,7 @@ var count = 1;
                                        var call_ok = function( imgData ){
 
                                             $("input[name='local']").val( "data:image/jpeg;base64," + imgData.toString() );
+                                            alert("La imagen se ha obtenido con exito");
 
                                        };
 
@@ -68,6 +69,7 @@ var count = 1;
                                     var call_ok = function( imgData){
 
                                             $("input[name='recibo']").val( "data:image/jpeg;base64," + imgData.toString() );
+                                            alert("La imagen se ha obtenido con exito");
 
                                        };
 
