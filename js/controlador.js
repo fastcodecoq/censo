@@ -133,6 +133,8 @@ var count = 1;
 
                       if(!estado)
                         {
+
+                          socket = false;
                             
                            salvarLS( usuario , function(){
 
@@ -144,6 +146,8 @@ var count = 1;
                         }
                       else
                         {
+                           if(!socket)
+                              conectarServer();
 
                            console.log(usuario)
                            socket.emit("guardar", { info : usuario, tipo: "normal"} );
