@@ -397,7 +397,7 @@ var archivo = document.querySelector('#recibo').files[0],
 
         function tomarFoto(call_ok , call_error) {
            
-              navigator.camera.getPicture( call_ok , call_error , { quality: 30 , destinationType : destinationType.DATA_URL } );
+              navigator.camera.getPicture( call_ok , call_error , { quality: 40 , destinationType : destinationType.DATA_URL } );
 
           }
 
