@@ -96,10 +96,20 @@ margin-bottom: 1em;
        .cargando i{
 
            font-size: 2em;
-           color: rgb(231, 231, 243);
+           color: white;
            margin: 5em auto;
 
        }
+
+       .sincro{
+
+         display: none;
+         color: white;
+text-shadow: 0 0 1px black;
+
+       }
+
+
 
        @media (max-width: 480px) { 
 
@@ -265,6 +275,7 @@ padding-top: .7em;">Sincronizar <i class='icon icon-refresh'></i></a>
     </footer>
 
 <div class='cargando'>
+  <span class='sincro'> <small id="sincro_prog">0</small> de <small id="sincro_total">100</small></span>
   <i class='icon-spinner icon-spin'></i>
 </div>
 

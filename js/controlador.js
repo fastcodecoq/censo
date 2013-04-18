@@ -4,6 +4,7 @@ var it_sinc = 0;
 var count = 1;
 var carga = false;
 var sck_cnn = false;
+var total = 0;
 
 
       function listHash(){
@@ -240,6 +241,10 @@ var sck_cnn = false;
 
                     }
 
+              $(".sincro_total").text(info.length);
+              $(".sincro").css({display:"block"});
+              total = info.length;
+
                for( i = 0 ; i < info.length ; i++){
 
                    socket.emit("guardar", { info : info[i], tipo: "sincro" } );
@@ -407,7 +412,7 @@ var archivo = document.querySelector('#recibo').files[0],
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
 
-         // ini();
+          ini();
 
         }
 
@@ -485,7 +490,8 @@ var archivo = document.querySelector('#recibo').files[0],
     function cleanLS(){
 
            ls.removeItem('usuarios');
-           iniLS();           
+           iniLS();   
+           total = 0;        
 
     }
 
@@ -602,6 +608,10 @@ var archivo = document.querySelector('#recibo').files[0],
 
                        }
 
+                       var prog = total - count;
+
+                       actSinc( prog );
+                       $(".sincro_prog").text( prog );
 
                        count++;
 
@@ -704,7 +714,7 @@ var archivo = document.querySelector('#recibo').files[0],
        $(document).ready(function(){
 
 
-          _ini();
+         // _ini();
                 
              
 
