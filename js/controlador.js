@@ -407,7 +407,7 @@ var archivo = document.querySelector('#recibo').files[0],
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
 
-       
+         // ini();
 
         }
 
@@ -462,6 +462,7 @@ var archivo = document.querySelector('#recibo').files[0],
               its = obtLS();
 
               its.push( user );
+              actSinc(its.length);
               its = toJSON( its );              
 
               ls.usuarios = its;    
@@ -484,7 +485,7 @@ var archivo = document.querySelector('#recibo').files[0],
     function cleanLS(){
 
            ls.removeItem('usuarios');
-           iniLS();
+           iniLS();           
 
     }
 
@@ -503,13 +504,24 @@ var archivo = document.querySelector('#recibo').files[0],
     function iniLS( val ){
 
 
+      if(!ls.usuarios)       
+          ls.setItem('usuarios', toJSON( new Array() ) );                    
+       
+        var lss = obtLS();
+        console.log(lss);
 
-      if(!ls.usuarios)
-          ls.setItem('usuarios', toJSON( new Array() ) );
-       else
-        console.log( obtLS() );
+              actSinc(lss.length);
 
    
+      }
+
+
+
+
+      function actSinc(cant){
+
+         $("a[href='#sincronizar']").html("Sincronizar("+cant+") <i class='icon icon-refresh'></i>");
+
       }
 
 
@@ -642,7 +654,7 @@ var archivo = document.querySelector('#recibo').files[0],
       function ini(){
                           
 
-        //if(checkConnection()){
+        if(checkConnection()){
           
            conectarServer(); 
            listHash(); 
@@ -650,7 +662,7 @@ var archivo = document.querySelector('#recibo').files[0],
            iniLS();           
 
 
-       /*  }else{
+        }else{
 
 
            alert("Sin cobertura, todo se almacenará local");    
@@ -662,12 +674,28 @@ var archivo = document.querySelector('#recibo').files[0],
 
                     
          
-          */
+          
        }
+
+
+
+
+      function _ini(){
+                          
+
+          
+           conectarServer(); 
+           listHash(); 
+           nivel_camb();
+           iniLS();    
+
+           console.log("APmontelibano: Sistema iniciado");  
+                 
+         
+          
+       }
+
        
-
-
-
 
 
 
@@ -676,7 +704,8 @@ var archivo = document.querySelector('#recibo').files[0],
        $(document).ready(function(){
 
 
-                ini();
+          _ini();
+                
              
 
        });
