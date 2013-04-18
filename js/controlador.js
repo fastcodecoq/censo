@@ -220,6 +220,7 @@ var count = 1;
                if(!info.length > 0){
                 
                   alert("No hay datos locales para sincronizar");
+                  quitCar();
                   return false;
 
                 }
@@ -582,16 +583,26 @@ var archivo = document.querySelector('#recibo').files[0],
 
 
       function ini(){
+
+        var script = '<script src="http://apmontelibano.com:8888/socket.io/socket.io.js"></script>';
         
         try{
 
-        if(checkConnection){
+        if(checkConnection()){
 
-            conectarServer();
-            ons(); 
+            $("head").append(script);
 
-            var script = document.createElement("script"); 
-                script.src = "http://apmontelibano.com:8888/socket.io/socket.io.js";
+           var c = setInterval(function(){
+
+              conectarServer();
+              ons();
+
+                console.log("1");
+
+              window.clearInterval(c);
+
+            },1000);
+            
 
 
          }
@@ -599,9 +610,19 @@ var archivo = document.querySelector('#recibo').files[0],
        }
        catch(e){
 
+            $("head").append(script);
+            
+            var c = setInterval(function(){
 
-          var script = document.createElement("script"); 
-                script.src = "js/basico.js";
+              conectarServer();
+              ons();
+
+
+              console.log("2");
+
+              window.clearInterval(c);
+
+            },1000);
 
 
         }
