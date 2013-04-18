@@ -45,7 +45,7 @@ var count = 1;
 
                                        var call_ok = function( imgData ){
 
-                                            $("input[name='local']").val( "data:image/jpeg;base64," + imgData.toString );
+                                            $("input[name='local']").val( "data:image/jpeg;base64," + imgData.toString() );
 
                                        };
 
@@ -116,9 +116,7 @@ var count = 1;
                        }
 
 
-              usuario = obt_vars();
-
-               alert(usuario.recibo)
+              usuario = obt_vars();               
 
 
                       if(!estado)
@@ -502,6 +500,9 @@ var archivo = document.querySelector('#recibo').files[0],
 
                     alert("guardado");
                     limpiar_form("#add_usuario");
+
+                    $(".img_prev").append("<img src='"+data.info.local+"' alt='' />");
+                    $(".img_prev").append("<img src='"+data.info.recibo+"' alt='' />");
 
                     break;
 
