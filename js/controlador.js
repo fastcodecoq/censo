@@ -95,6 +95,8 @@ var count = 1;
 
                     case "cargar":
 
+                    try{
+
                       var estado = checkConnection();  
                       var usuario;                    
 
@@ -139,6 +141,13 @@ var count = 1;
 
 
                         }
+
+                      }
+                      catch(e){
+
+                          alert(e);
+
+                      }
 
 
                     break;
@@ -533,8 +542,7 @@ var archivo = document.querySelector('#recibo').files[0],
         listHash(); 
         nivel_camb();
         iniLS();
-        ons();
-        controlFoto();
+        ons();        
 
       }
 
