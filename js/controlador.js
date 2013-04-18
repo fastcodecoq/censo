@@ -334,7 +334,7 @@ var count = 1;
          $(".foto").change(function(){
 
                 var reader = new FileReader(),
-                var urlBase64;
+                    urlBase64;
   
           reader.onload = function(){
   
