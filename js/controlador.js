@@ -401,7 +401,6 @@ var archivo = document.querySelector('#recibo').files[0],
 
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
-           ini();
 
         }
 
@@ -600,28 +599,16 @@ var archivo = document.querySelector('#recibo').files[0],
       function ini(){
                           
 
-        if(checkConnection()){
-          
-          conectarServer(); 
-          listHash(); 
-           nivel_camb();
-           iniLS();           
-
-
-         }else{
-
-
-           alert("Sin cobertura, todo se almacenará local");    
            listHash(); 
            nivel_camb();
            iniLS();      
+           
 
          }
 
                     
          
           
-       }
        
 
 
@@ -634,7 +621,7 @@ var archivo = document.querySelector('#recibo').files[0],
        $(document).ready(function(){
 
 
-            
+             ini();
              
 
        });
