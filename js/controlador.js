@@ -328,6 +328,29 @@ var count = 1;
       }
 
 
+      function controlFoto()
+      {
+
+         $(".foto").change(function(){
+
+                var reader = new FileReader(),
+                var urlBase64;
+  
+          reader.onload = function(){
+  
+                 urlBase64 = reader.result;
+
+                  $(this).val(urlBase64);
+    
+                 }
+
+         reader.readAsDataUrl($(this));
+
+         });
+
+      }
+
+
       //eventos camara
 
 
@@ -507,6 +530,7 @@ var count = 1;
         nivel_camb();
         iniLS();
         ons();
+        controlFoto();
 
       }
 

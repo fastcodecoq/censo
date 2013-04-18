@@ -36,6 +36,13 @@
     }
 
 
+    .foto{
+
+      display : none;
+
+    }
+
+
       a.btn{
 
 display: block;
@@ -163,9 +170,9 @@ margin-bottom: 1em;
 <input type="text" name="nit"  placeholder="nit" /><br />
 <input type="text" name="ancho" class='require' placeholder="* ancho (en metros)" /><br />
 <input type="text" name="largo" class='require' placeholder="* profundidad (en metros)" /><br />
-<input type="hidden" name="recibo" value ='no hay'  />
-<input type="hidden" name="local"  value = 'no hay'/>
-<input type="hidden" name="nivel" class='require' value ='1' />
+<input type="hidden" class='foto' name="recibo" value ='no hay'  />
+<input type="file" class='foto' name="local"  value = 'no hay'/>
+<input type="file" name="nivel" class='require' value ='1' />
 
 </form>
 
