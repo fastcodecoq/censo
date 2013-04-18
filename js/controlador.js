@@ -2,9 +2,13 @@ var socket = false;
 var ls = window.localStorage;
 var it_sinc = 0;
 var count = 1;
+var carga = false;
 
 
       function listHash(){
+
+           if(carga)
+             return false;
 
 
           $("a[href^='#']").on("click", function(){
@@ -510,6 +514,7 @@ var archivo = document.querySelector('#recibo').files[0],
       function showCar(){
 
           $(".cargando").css({display: "block"});
+          carga = true;
 
       }
 
@@ -517,6 +522,7 @@ var archivo = document.querySelector('#recibo').files[0],
       function quitCar(){
 
          $(".cargando").css({display: "none"});
+         carga = false;
 
       }
     
