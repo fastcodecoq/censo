@@ -38,6 +38,8 @@ var count = 1;
 
                           var tipo = $(this).attr("rel");
 
+                          showCar();
+
                             switch(tipo){
 
                                 case "local":
@@ -46,6 +48,7 @@ var count = 1;
                                        var call_ok = function( imgData ){
 
                                             $("input[name='local']").val( "data:image/jpeg;base64," + imgData.toString() );
+                                            quitCar();
                                             alert("La imagen se ha obtenido con exito");
 
                                        };
@@ -54,6 +57,7 @@ var count = 1;
                                        var call_error = function(){
 
                                           alert("no se ha podido obtener la imagen");
+                                           quitCar();
 
                                        };
 
@@ -69,6 +73,7 @@ var count = 1;
                                     var call_ok = function( imgData){
 
                                             $("input[name='recibo']").val( "data:image/jpeg;base64," + imgData.toString()  );
+                                             quitCar();
                                             alert("La imagen se ha obtenido con exito");
 
                                        };
@@ -78,6 +83,7 @@ var count = 1;
                                        var call_error = function(){
 
                                           alert("no se ha podido obtener la imagen");
+                                           quitCar();
 
                                        };
 
@@ -113,12 +119,16 @@ var count = 1;
                   if(!calcular_nivel( usuario )){
                          
                          alert("ancho y profundidad deben ser númericos");
+                         quitCar();
                          return;
 
                        }
 
+                  
+                  showCar();
 
-              usuario = obt_vars();               
+
+                 usuario = obt_vars();               
 
 
                       if(!estado)
@@ -145,6 +155,7 @@ var count = 1;
                       catch(e){
 
                           alert("error");
+                          quitCar()
 
                       }
 
@@ -154,6 +165,7 @@ var count = 1;
 
                     case "sincronizar":
 
+                        showCar();
                         sincronizar();
 
                     break;
@@ -484,6 +496,20 @@ var archivo = document.querySelector('#recibo').files[0],
       }
 
 
+      function showCar(){
+
+          $(".cargando").css({display:block});
+
+      }
+
+
+      function quitCar(){
+
+         $(".cargando").css({display:none});
+
+      }
+
+
 
       function ons(){
 
@@ -503,8 +529,6 @@ var archivo = document.querySelector('#recibo').files[0],
                     alert("guardado");
                     limpiar_form("#add_usuario");
 
-                    $(".img_prev").append("<img src='"+data.info.local+"' alt='' />");
-                    $(".img_prev").append("<img src='"+data.info.recibo+"' alt='' />");
 
                     break;
 
@@ -533,6 +557,9 @@ var archivo = document.querySelector('#recibo').files[0],
                   }
                   else
                     alert("No guardado, intenta de nuevo");
+
+
+                             quitCar();
 
           });
 
