@@ -408,7 +408,7 @@ var archivo = document.querySelector('#recibo').files[0],
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
           db = window.openDatabase("apmont", "1.0", "usuarios", 209715200 );
-          db.transaction(iniDB, error, ok);
+          db.transaction(iniDB, error);
 
           console.log(db);
 
@@ -438,6 +438,8 @@ var archivo = document.querySelector('#recibo').files[0],
 
             tx.executeSql('INSERT INTO usuarios (user) VALUES ('+ user +')');
 
+            db.transaction(selDB,error);
+
 
         }
 
@@ -450,7 +452,7 @@ var archivo = document.querySelector('#recibo').files[0],
         function ok() {
 
            alert("Registro guardado");
-           db.transaction(selDB,error,ok);
+     
 
          }
 
