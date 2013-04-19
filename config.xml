@@ -26,9 +26,7 @@
     <icon src="icon_48.png" width="48" height="48" />
     <icon src="icon_36.png" width="36" height="36" />
 
-    <gap:splash src="appcapture.png" />
-
-    <gap:plugin name="Storage" value="org.apache.cordova.Storage" />
+    <gap:splash src="appcapture.png" />    
 
 
 <feature name="http://api.phonegap.com/1.0/camera"/>

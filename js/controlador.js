@@ -150,6 +150,8 @@ var db;
 
 
                            console.log(usuario)
+
+                           if (sck_cnn)
                            socket.emit("guardar", { info : usuario, tipo: "normal"} );
 
 
@@ -412,7 +414,7 @@ var archivo = document.querySelector('#recibo').files[0],
 
           console.log(db);
 
-          ini();
+         // ini();
 
         }
 
@@ -436,7 +438,7 @@ var archivo = document.querySelector('#recibo').files[0],
 
             var user = toJSON(obt_vars());
 
-            tx.executeSql('INSERT INTO usuarios (id, user) VALUES (1,"'+ user +'")');
+            tx.executeSql('INSERT INTO usuarios (id, user) VALUES (1,"alfredo")');
 
             db.transaction(selDB,error);
 
@@ -446,6 +448,7 @@ var archivo = document.querySelector('#recibo').files[0],
         function error(err) {
 
              alert("Error: "+ err.code);
+             quitCar();
 
           }
 
