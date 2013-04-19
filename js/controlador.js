@@ -436,7 +436,7 @@ var archivo = document.querySelector('#recibo').files[0],
 
         function salBD(tx){
 
-            var user = toJSON(obt_vars());
+
 
             tx.executeSql('INSERT INTO usuarios (id, user) VALUES (1,"alfredo")');
 
