@@ -28,10 +28,14 @@
 
     <gap:splash src="appcapture.png" />
 
+    <plugin name="Storage" value="org.apache.cordova.Storage" />
+
+
 <feature name="http://api.phonegap.com/1.0/camera"/>
 <feature name="http://api.phonegap.com/1.0/network"/>
 <feature name="http://api.phonegap.com/1.0/notification"/>
 <feature name="http://api.phonegap.com/1.0/media"/>
 <feature name="http://api.phonegap.com/1.0/file"/>
+<feature id="blackberry.widgetcache" required="true" version="1.0.0.0" />
 
 </widget>

@@ -5,6 +5,7 @@ var count = 1;
 var carga = false;
 var sck_cnn = false;
 var total = 0;
+var db;
 
 
       function listHash(){
@@ -140,12 +141,7 @@ var total = 0;
                       if(!estado || !sck_cnn)
                         {                      
                             
-                           salvarLS( usuario , function(){
-
-                                alert("Sin conexion: Guardado localmente. Cuando halla cobertura pulse Sincronizar");
-                                quitCar();
-
-                           });
+                           db.transaction(salBD, error, function(){ alert("Guardado localmente") });
 
 
                         }
@@ -411,10 +407,62 @@ var archivo = document.querySelector('#recibo').files[0],
 
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
+          db = window.openDatabase("apmont", "1.0", "usuarios", 209715200 );
+          db.transaction(iniDB, error, ok);
 
-        //  ini();
+          console.log(db);
+
+          ini();
 
         }
+
+
+        //base de datos movil
+
+
+          function iniDB(tx) {
+              
+               tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id unique, user)');
+
+             }
+
+        function selDB(tx){
+
+            tx.executeSql('Select user FROM usuarios',[], qsuccess,error);
+
+        }
+
+        function salBD(tx){
+
+            var user = toJSON(obt_vars());
+
+            tx.executeSql('INSERT INTO usuarios (user) VALUES ('+ user +')');
+
+
+        }
+
+        function error(err) {
+
+             alert("Error: "+err.code);
+
+          }
+
+        function ok() {
+
+           alert("Registro guardado");
+           db.transaction(selDB,error,ok);
+
+         }
+
+
+         function qsuccess(tx, rs){
+
+             alert(rs.rows.length);
+
+          }
+
+
+        //-------------------------------//
 
 
         function tomarFoto(call_ok , call_error) {
@@ -713,7 +761,7 @@ var archivo = document.querySelector('#recibo').files[0],
        $(document).ready(function(){
 
 
-          _ini();
+          //_ini();
                 
              
 
