@@ -412,7 +412,7 @@ var archivo = document.querySelector('#recibo').files[0],
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
 
-          ini();
+        //  ini();
 
         }
 
@@ -694,7 +694,6 @@ var archivo = document.querySelector('#recibo').files[0],
                           
 
           
-           conectarServer(); 
            listHash(); 
            nivel_camb();
            iniLS();    
@@ -714,7 +713,7 @@ var archivo = document.querySelector('#recibo').files[0],
        $(document).ready(function(){
 
 
-         // _ini();
+          _ini();
                 
              
 

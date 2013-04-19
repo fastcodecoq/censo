@@ -54,7 +54,6 @@ color: rgba(0, 0, 0, 0.61);
 
 display: block;
 padding: 1em;
-width: 100%;
 margin: 0 auto;
 color: white !important;
 
@@ -64,7 +63,7 @@ color: white !important;
        #add_usuario input{
 
 
-        width: 100%;
+        width: 97%;
 margin-left: 0%;
 padding: 1em .5em;
 margin-bottom: 1em;
@@ -114,6 +113,14 @@ text-shadow: 0 0 1px black;
        @media (max-width: 480px) { 
 
 
+        body{
+
+          width: 100%;
+          padding: 0;
+
+        }
+
+
           #nivel_{
 
             margin-left: 15% !important;
@@ -123,7 +130,7 @@ text-shadow: 0 0 1px black;
           #add_usuario input{
 
 
-        width: 100%;
+        width: 97%;
 margin-left: 0%;
 padding: 1em .5em;
 margin-bottom: 1em;
@@ -146,7 +153,7 @@ margin-bottom: 1em;
           #add_usuario input{
 
 
-        width: 100%;
+        width: 97%;
 margin-left: 0%;
 padding: 1em .5em;
 margin-bottom: 1em;
@@ -197,7 +204,7 @@ margin-bottom: 1em;
     </header>
 
 
-    <div style="padding: 3em" >
+    <div style="width:94%; margin:0 auto" class="clearfix" >
 
 
 
@@ -206,15 +213,15 @@ margin-bottom: 1em;
 
 <span>Nombre</pan>
 <input type="text" name="nombre" class='require' placeholder="* Comercial" /> <br />
-<span>Nic</pan>
+<span>Nic</span>
 <input type="number" name="nic" class='require' placeholder="* 456271" /><br />
-<span>Nit</pan>
+<span style="display:block">Nit</span>
 <input type="text" name="nit"  placeholder="nit" /><br />
-<span>Lado 1 (en mts)</pan>
+<span>Lado 1 (en mts)</span>
 <input type="number" name="ancho" class='require' placeholder="* 6" /><br />
-<span>Lado 2 (en mts)</pan>
+<span>Lado 2 (en mts)</span>
 <input type="number" name="largo" class='require' placeholder="* 7" /><br />
-<span>Observación</pan>
+<span>Observación</span>
 <input type="text" name="obs"  placeholder="Texto" /><br />
 <input type="hidden" name="local"    value='0' />
 <input type="hidden" name="recibo"  value='0' />
