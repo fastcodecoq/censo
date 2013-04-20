@@ -415,7 +415,7 @@ var archivo = document.querySelector('#recibo').files[0],
 
           console.log(db);
 
-         // ini();
+         ini();
 
         }
 
