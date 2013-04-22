@@ -496,9 +496,12 @@ var archivo = document.querySelector('#recibo').files[0],
         parentName = parent.substring(parent.lastIndexOf('/')+1),
         parentEntry = new DirectoryEntry(parentName, parent);
 
-        alert(parent + "  " + parentName);
+        var nFile = gen_cad_al()+".jpg";
+
+        alert("Nombre del archivo "+ nFile);
+        alert(parentEntry.name);
        
-        entry.copyTo(parentEntry, gen_cad_al()+".jpg" , file_ok, file_error);
+        entry.copyTo(parentEntry, nFile, file_ok, file_error);
 
 
          }
