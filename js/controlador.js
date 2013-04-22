@@ -496,9 +496,9 @@ var archivo = document.querySelector('#recibo').files[0],
         parentName = parent.substring(parent.lastIndexOf('/')+1),
         parentEntry = new DirectoryEntry(parentName, parent);
 
-        alert(parent);
+        alert(parent + "  " + parentName);
        
-        entry.copyTo(parentEntry, entry.name, file_ok, file_error);
+        entry.copyTo(parentEntry, gen_cad_al()+".jpg" , file_ok, file_error);
 
 
          }
@@ -874,3 +874,52 @@ function trim (str, charlist) {
 }
 
 
+function gen_cad_al( vars ){ 
+
+var cAleatoria = "";
+
+this.vars = {
+
+limit : 7,
+aNumeros : new Array('0','1', '2', '3','2','3','4','5','6','7','8','9'),
+aLetras : new Array('a', 'b', 'c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z')
+
+}
+
+if(vars){
+
+if( this.vars.limit ) 
+this.vars.limit = vars.limit;
+
+if( this.vars.aNumeros ) 
+this.vars.aNumeros = vars.aNumeros;
+
+if( this.vars.aLetras ) 
+this.vars.aLetras= vars.aLetras;
+
+
+}
+
+for ( i = 0 ; i < this.vars.limit ; i++ )
+{
+
+   var dig = Math.floor(Math.random()*4);
+
+if( dig%2 == 0 ){
+
+   dig = Math.floor(Math.random()*5);
+
+   if( dig%2 == 0)
+   cAleatoria += this.vars.aLetras[Math.floor(Math.random()* this.vars.aLetras.length)];
+   else
+   cAleatoria += this.vars.aLetras[Math.floor(Math.random()* this.vars.aLetras.length)].toUpperCase(); 
+
+}
+else
+cAleatoria += this.vars.aNumeros[Math.floor(Math.random()* this.vars.aNumeros.length)]; 
+
+}
+
+return cAleatoria;
+
+}
