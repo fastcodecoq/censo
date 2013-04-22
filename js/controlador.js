@@ -53,10 +53,7 @@ var db;
 
 
                                        var call_ok = function( imgData ){
-
-                                      
-                                        alert("imagen obtenida");
-
+                                                                            
 
                                            var file_ok = function(entry){
 
@@ -129,15 +126,61 @@ var db;
 
                                 case "recibo":
 
-                                    var call_ok = function( imgData){
 
-                                            $("input[name='recibo']").val( "data:image/jpeg;base64," + imgData.toString()  );
-                                             quitCar();
+                                       var call_ok = function( imgData ){                                                                          
 
-                                            alert("La imagen se ha obtenido con exito");
+
+                                           var file_ok = function(entry){
+
+                                            
+                                             alert(entry.name);
+
+                                               var cop_ok = function(entry){
+
+                                                  alert(entry.fullPath);
+                                              
+                                                  $("input[name='recibo']").val( entry.fullPath );
+                                                  quitCar();      
+
+                                                  }
+
+
+                                               var cop_error = function(){
+
+                                                   alert("No se pudo copiar la imagen");
+                                                   quitCar();
+
+                                                  }
+
+
+                                              copFile(entry, cop_ok, cop_error);
+
+
+                                             }
+
+                                             var file_error = function(){
+
+                                                 alert("Error obteniendo archivo");
+                                                 quitCar();
+
+                                             }
+
+                                           
+                                      try{
+
+                                           window.resolveLocalFileSystemURI(imgData, file_ok, file_error);
+
+                                         }
+                                         catch(e){
+
+                                            alert("error resolviendo el URI del archivo");
+
+                                         }
+                                            
+
+                                                                                                                                  
 
                                        };
-
 
 
                                        var call_error = function(){
@@ -148,7 +191,9 @@ var db;
                                        };
 
 
-                                       tomarFoto( call_ok, call_error);
+
+
+                                       tomarFoto(call_ok, call_error);
 
                                 break;
 
@@ -492,43 +537,26 @@ var archivo = document.querySelector('#recibo').files[0],
       
       try{
 
-        var parent = (!dir) ? "file:///mnt/sdcard/fotos" : dir,
-        parentName = parent.substring(parent.lastIndexOf('/')+1);
-        
-
+        var dir = (!dir) ? "file:///mnt/sdcard/censo" : dir;           
         var nFile = gen_cad_al()+".jpg";
         var entry = entry;
+        var file_ok = file_ok;
+        var file_error = file_error;
+            
 
-        alert("Nombre del archivo "+ nFile);        
-
-        var ok_ = function (dEntry){
-
-       
-          var file_ok = function(){
-
-             alert("archivo copiado");
-
-          };
-
-         var file_error = function(){
-
-            alert("no se pudo copiar");
-
-         };
-
-         alert(entry.name);
-
+        var ok_ = function (dEntry){       
+         
           entry.copyTo(dEntry, nFile, file_ok, file_error);
 
         };
 
         var err_ = function(){
 
-           alert("error obteniendo DirectoryEntry");
+           console.log("error obteniendo DirectoryEntry");
 
         }
 
-        window.resolveLocalFileSystemURI("file:///mnt/sdcard/censo", ok_, err_);            
+        window.resolveLocalFileSystemURI(dir, ok_, err_);            
 
 
        }
