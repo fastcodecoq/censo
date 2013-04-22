@@ -137,7 +137,7 @@ var db;
 
                  usuario = obt_vars();              
                             
-                 salvarLS(usuario, function(){ alert("Guardado localmente") });
+                 salvarLS(usuario, function(){ alert("Guardado localmente"); quitCar(); });
 
                       }
                       catch(e){
@@ -650,6 +650,7 @@ var archivo = document.querySelector('#recibo').files[0],
                          
                          alert("Se ha sincronizado correctamente");
                          count = 1;
+                         quitCar();
 
                        }
 
