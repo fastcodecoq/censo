@@ -458,10 +458,16 @@ var archivo = document.querySelector('#recibo').files[0],
 
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
+
+          var fil_ok = function(){
+
+              alert("ok");
+
+          }
           
          try{
           
-          window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, file_ok, null);
+             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fil_ok, null);
            
            }
            catch(e)
@@ -471,7 +477,7 @@ var archivo = document.querySelector('#recibo').files[0],
 
            }
 
-            //ini();
+           ini();
 
         }
 

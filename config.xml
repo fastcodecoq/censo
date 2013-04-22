@@ -26,7 +26,10 @@
     <icon src="icon_48.png" width="48" height="48" />
     <icon src="icon_36.png" width="36" height="36" />
 
-    <gap:splash src="appcapture.png" />    
+    <gap:splash src="appcapture.png" />
+
+    <plugin name="File" value="org.apache.cordova.FileUtils" />
+    <plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" />    
 
 
 <feature name="http://api.phonegap.com/1.0/camera"/>
