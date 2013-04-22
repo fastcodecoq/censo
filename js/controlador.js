@@ -54,9 +54,58 @@ var db;
 
                                        var call_ok = function( imgData ){
 
-                                            $("input[name='local']").val( "data:image/jpeg;base64," + imgData.toString() );
-                                            quitCar();
-                                            alert("La imagen se ha obtenido con exito");
+                                      
+                                        alert("imagen obtenida");
+
+
+                                           var file_ok = function(entry){
+
+                                            
+
+                                               var cop_ok = function(entry){
+
+                                                  alert(entry.fullPath);
+                                              
+                                                  $("input[name='local']").val( entry.fullPath );
+                                                  quitCar();      
+
+                                                  }
+
+
+                                               var cop_error = function(){
+
+                                                   alert("No se pudo copiar la imagen");
+                                                   quitCar();
+
+                                                  }
+
+
+                                              copFile(entry, cop_ok, cop_error);
+
+
+                                             }
+
+                                             var file_error = function(){
+
+                                                 alert("Error obteniendo archivo");
+                                                 quitCar();
+
+                                             }
+
+                                           
+                                      try{
+
+                                           window.resolveLocalFileSystemURI(imgData, file_ok, file_error);
+
+                                         }
+                                         catch(e){
+
+                                            alert("error resolviendo el URI del archivo");
+
+                                         }
+                                            
+
+                                                                                                                                  
 
                                        };
 
@@ -67,6 +116,8 @@ var db;
                                            quitCar();
 
                                        };
+
+
 
 
                                        tomarFoto(call_ok, call_error);
@@ -81,6 +132,7 @@ var db;
 
                                             $("input[name='recibo']").val( "data:image/jpeg;base64," + imgData.toString()  );
                                              quitCar();
+
                                             alert("La imagen se ha obtenido con exito");
 
                                        };
@@ -394,6 +446,7 @@ var archivo = document.querySelector('#recibo').files[0],
 
        var pictureSource;   // Origen de la imagen
        var destinationType; // Formato del valor retornado
+       var entry;
 
     // Espera a que PhoneGap conecte con el dispositivo.
     //
@@ -405,59 +458,51 @@ var archivo = document.querySelector('#recibo').files[0],
 
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
+          
+         try{
+          
+          window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, file_ok, null);
+           
+           }
+           catch(e)
+           {
 
-         ini();
+            alert("error obteniendo sistema de archivos local");
 
-        }
+           }
 
-
-        //base de datos movil
-
-
-          function iniDB(tx) {
-              
-               tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id unique, user)');
-
-             }
-
-        function selDB(tx){
-
-            tx.executeSql('Select user FROM usuarios',[], qsuccess,error);
+            //ini();
 
         }
 
-        function salBD(tx){
+
+        //copiar un archivo a una carpeta
 
 
+        function copFile(entry, file_ok, file_error, dir) {
 
-            tx.executeSql('INSERT INTO usuarios (id, user) VALUES (1,"alfredo")');
+      
+      try{
 
-            db.transaction(selDB,error);
+        var parent = (!dir) ? "censo/fotos" : dir,
+        parentName = parent.substring(parent.lastIndexOf('/')+1),
+        parentEntry = new DirectoryEntry(parentName, parent);
+       
+        entry.copyTo(parentEntry, entry.name, file_ok, file_error);
 
 
-        }
+         }
+         catch(e){
 
-        function error(err) {
-
-             alert("Error: "+ err.code);
-             quitCar();
-
-          }
-
-        function ok() {
-
-           alert("Registro guardado");
-     
+           alert("error copiando archivo");
 
          }
 
+        
+        }
 
-         function qsuccess(tx, rs){
 
-             alert(rs.rows.length);
-
-          }
-
+        
 
         //-------------------------------//
 
