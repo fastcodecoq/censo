@@ -61,6 +61,7 @@ var db;
                                            var file_ok = function(entry){
 
                                             
+                                             alert(entry.name);
 
                                                var cop_ok = function(entry){
 
@@ -459,11 +460,6 @@ var archivo = document.querySelector('#recibo').files[0],
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
 
-          var fil_ok = function(){
-
-              alert("ok");
-
-          }
           
          try{
           
@@ -490,7 +486,7 @@ var archivo = document.querySelector('#recibo').files[0],
       
       try{
 
-        var parent = (!dir) ? "censo/fotos" : dir,
+        var parent = (!dir) ? "/mnt/extsd/censo/fotos" : dir,
         parentName = parent.substring(parent.lastIndexOf('/')+1),
         parentEntry = new DirectoryEntry(parentName, parent);
        
