@@ -492,19 +492,46 @@ var archivo = document.querySelector('#recibo').files[0],
       
       try{
 
-        var parent = (!dir) ? "file:///censo/fotos" : dir,
-        parentName = parent.substring(parent.lastIndexOf('/')+1),
-        parentEntry = new DirectoryEntry(parentName, parent);
+        var parent = (!dir) ? "file:///mnt/sdcard/fotos" : dir,
+        parentName = parent.substring(parent.lastIndexOf('/')+1);
+        
 
         var nFile = gen_cad_al()+".jpg";
+        var entry = entry;
 
-        alert("Nombre del archivo "+ nFile);
-        alert(parentEntry.name);
+        alert("Nombre del archivo "+ nFile);        
+
+        var ok_ = function (dEntry){
+
        
-        entry.copyTo(parentEntry, nFile, file_ok, file_error);
+          var file_ok = function(){
+
+             alert("archivo copiado");
+
+          };
+
+         var file_error = function(){
+
+            alert("no se pudo copiar");
+
+         };
+
+         alert(entry.name);
+
+          entry.copyTo(dEntry, nFile, file_ok, file_error);
+
+        };
+
+        var err_ = function(){
+
+           alert("error obteniendo DirectoryEntry");
+
+        }
+
+        window.resolveLocalFileSystemURI("file:///mnt/sdcard/censo", ok_, err_);            
 
 
-         }
+       }
          catch(e){
 
            alert("error copiando archivo");
