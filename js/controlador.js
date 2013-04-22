@@ -56,13 +56,11 @@ var db;
                                                                             
 
                                            var file_ok = function(entry){
-
-                                            
-                                             alert(entry.name);
+                                                                                        
 
                                                var cop_ok = function(entry){
 
-                                                  alert(entry.fullPath);
+                                                  alert("Imagen guardada");
                                               
                                                   $("input[name='local']").val( entry.fullPath );
                                                   quitCar();      
@@ -131,13 +129,11 @@ var db;
 
 
                                            var file_ok = function(entry){
-
-                                            
-                                             alert(entry.name);
+                                                                                         
 
                                                var cop_ok = function(entry){
 
-                                                  alert(entry.fullPath);
+                                                  alert("Imagen guardada");
                                               
                                                   $("input[name='recibo']").val( entry.fullPath );
                                                   quitCar();      
