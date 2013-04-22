@@ -460,6 +460,12 @@ var archivo = document.querySelector('#recibo').files[0],
           pictureSource=navigator.camera.PictureSourceType;
           destinationType=navigator.camera.DestinationType;
 
+          function fil_ok(){
+
+             console.log("ok")
+
+          }
+
           
          try{
           
@@ -486,9 +492,11 @@ var archivo = document.querySelector('#recibo').files[0],
       
       try{
 
-        var parent = (!dir) ? "/mnt/extsd/censo/fotos" : dir,
+        var parent = (!dir) ? "file:///censo/fotos" : dir,
         parentName = parent.substring(parent.lastIndexOf('/')+1),
         parentEntry = new DirectoryEntry(parentName, parent);
+
+        alert(parent);
        
         entry.copyTo(parentEntry, entry.name, file_ok, file_error);
 
