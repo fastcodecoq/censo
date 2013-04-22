@@ -231,7 +231,13 @@ var db;
 
                  usuario = obt_vars();              
                             
-                 salvarLS(usuario, function(){ alert("Guardado localmente"); quitCar(); });
+                 salvarLS(usuario, function(){ 
+
+                  alert("Guardado localmente"); 
+                  limpiar_form();
+                  quitCar();
+
+                   });
 
                       }
                       catch(e){
@@ -765,7 +771,7 @@ var archivo = document.querySelector('#recibo').files[0],
 
                        var prog = total - count;
 
-                       actSinc( prog );
+                       actSinc( prog + 1);
                        $(".sincro_prog").text( prog );
 
                        count++;
