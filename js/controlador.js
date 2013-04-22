@@ -135,27 +135,9 @@ var db;
                   showCar();
 
 
-                 usuario = obt_vars();               
-
-
-                      if(!estado || !sck_cnn)
-                        {                      
+                 usuario = obt_vars();              
                             
-                           db.transaction(salBD, error, function(){ alert("Guardado localmente") });
-
-
-                        }
-                      else
-                        {
-
-
-                           console.log(usuario)
-
-                           if (sck_cnn)
-                           socket.emit("guardar", { info : usuario, tipo: "normal"} );
-
-
-                        }
+                 salvarLS(usuario, function(){ alert("Guardado localmente") });
 
                       }
                       catch(e){
@@ -169,7 +151,7 @@ var db;
                     break;
 
 
-                    case "sincronizar":
+                    case "sincronizar":                        
 
                         showCar();
                         sincronizar();
@@ -221,6 +203,28 @@ var db;
 
 
 
+                if( !checkConnection() )
+                    {
+
+                       alert("Para sincronizar debes tener cobertura");
+                       quitCar();
+                       return false;
+
+                    }else{
+
+                        conectarServer();
+
+                    }
+
+                if(!sck_cnn)
+                {
+
+                   alert("No ha sido posible conectar al servidor");
+                   return false;
+
+                }
+
+
                if(!info.length > 0){
                 
                   alert("No hay datos locales para sincronizar");
@@ -230,14 +234,6 @@ var db;
                 }
 
 
-                if( !checkConnection() )
-                    {
-
-                       alert("Para sincronizar debes tener cobertura");
-                       quitCar();
-                       return false;
-
-                    }
 
               $(".sincro_total").text(info.length);
               $(".sincro").css({display:"block"});
