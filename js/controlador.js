@@ -232,10 +232,19 @@ var db;
                  usuario = obt_vars();              
                             
                  salvarLS(usuario, function(){ 
+                  
+                  try{
 
-                  alert("Guardado localmente"); 
                   limpiar_form();
+                  alert("Guardado localmente"); 
                   quitCar();
+
+                  }catch(e){
+
+                     console.log(e);
+
+
+                  }
 
                    });
 
@@ -243,6 +252,7 @@ var db;
                       catch(e){
 
                           alert("error");
+                          console.log(e);
                           quitCar();
 
                       }
@@ -353,6 +363,10 @@ var db;
 
 
       function limpiar_form( form ){
+
+
+         if(!form)
+           var form = "form#add_usuario";
 
            var inputs = $(form + " input");
 
